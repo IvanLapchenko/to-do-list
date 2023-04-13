@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Authorization</title>
+    <link rel="stylesheet" href="static/style.css">
+  </head>
+<body>
+  <h1>{{ title }}</h1>
+  {% if error %}
+    <p style="color: red">{{ error }}</p>
+  {% endif %}
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+  <form method="post">
+    {{ form.csrf_token }}
+    {% if form.username %}
+      {{ form.username.label }} {{ form.username }}<br>
+    {% endif %}
+    {{ form.password.label }} {{ form.password }}<br>
+    {% if form.confirm_password %}
+      {{ form.confirm_password.label }} {{ form.confirm_password }}<br>
+    {% endif %}
+    <button type="submit">{{ button_label }}</button>
+  </form>
+</body>
