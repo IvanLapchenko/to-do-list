@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Flask Sessions and Cache Demo</title>
+    <title>ToDo</title>
     <link rel="stylesheet" href="static/style.css">
   </head>
   <body>
-    <h1>Welcome to my Flask Sessions and Cache Demo!</h1>
+    <h1>To-Do List</h1>
     {% if session.logged_in %}
-      <p>You are logged in as {{ session.username }}. <a href="/logout">Log out</a></p>
+      <p class="auth-status-field">You are logged in as {{ session.username }}. <a href="/logout">Log out</a></p>
     {% else %}
-      <p>You are not logged in. <a href="/login">Log in</a></p>
+      <p class="auth-status-field">You are not logged in. <a href="/login">Log in</a></p>
     {% endif %}
+
+    {% for task in tasks %}
+    <div class="task" style="background-color: #f2f2f2; color: #333;">
+      <h2 class="task-title ">{{ task }}</h2>
+    </div>
+    {% endfor %}
 
     <h1>Add Task</h1>
     <form method="post" action="/add_task">
       {{ form.csrf_token }}
       {{ form.title.label }} {{ form.title }}<br>
-      {{ form.description.label }} {{ form.description }}<br>
       <input type="submit" value="Add task">
     </form>
   </body>

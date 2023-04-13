@@ -47,3 +47,16 @@ li {
   color: red;
   font-weight: bold;
 }
+
+.task {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px #ccc;
+}
+
+.task-title {
+  margin-top: 0;
+  margin-bottom: 5px;
+  font-size: 1.5em;
+}
